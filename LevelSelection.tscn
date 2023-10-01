@@ -8,10 +8,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -106.0
-margin_top = -52.0
-margin_right = 106.0
-margin_bottom = 52.0
+margin_left = -158.0
+margin_top = -72.0
+margin_right = 158.0
+margin_bottom = 72.0
 columns = 4
 script = ExtResource( 2 )
 
@@ -22,38 +22,38 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 50.0
-margin_bottom = 50.0
+margin_right = 76.0
+margin_bottom = 70.0
 
 [node name="LevelItem2" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 54.0
+margin_left = 80.0
 margin_top = 0.0
-margin_right = 104.0
-margin_bottom = 50.0
+margin_right = 156.0
+margin_bottom = 70.0
 
 [node name="LevelItem3" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 108.0
+margin_left = 160.0
 margin_top = 0.0
-margin_right = 158.0
-margin_bottom = 50.0
+margin_right = 236.0
+margin_bottom = 70.0
 
 [node name="LevelItem4" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 162.0
+margin_left = 240.0
 margin_top = 0.0
-margin_right = 212.0
-margin_bottom = 50.0
+margin_right = 316.0
+margin_bottom = 70.0
 
 [node name="LevelItem5" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.0
@@ -61,16 +61,16 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
-margin_top = 54.0
-margin_right = 50.0
-margin_bottom = 104.0
+margin_top = 74.0
+margin_right = 76.0
+margin_bottom = 144.0
 
 [node name="LevelItem6" parent="." instance=ExtResource( 1 )]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 54.0
-margin_top = 54.0
-margin_right = 104.0
-margin_bottom = 104.0
+margin_left = 80.0
+margin_top = 74.0
+margin_right = 156.0
+margin_bottom = 144.0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://sprites/level_icon/trou.png" type="Texture" id=1]
 [ext_resource path="res://LevelItem.gd" type="Script" id=2]
 
 [node name="LevelItem" type="Button"]
@@ -12,9 +13,9 @@ margin_top = -25.0
 margin_right = 25.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 50, 50 )
-text = "x"
+icon = ExtResource( 1 )
 icon_align = 1
 script = ExtResource( 2 )
 
-[connection signal="pressed" from="." to="." method="_on_LevelITem_pressed"]
 [connection signal="pressed" from="." to="." method="_on_LevelItem_pressed"]
+[connection signal="pressed" from="." to="." method="_on_LevelITem_pressed"]
