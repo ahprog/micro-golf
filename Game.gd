@@ -63,7 +63,9 @@ func _process(delta):
 		is_first_mouse_capture = false
 		
 		# Capture ball hit
-		if Input.is_action_just_released("hit_ball") && intersection_points.size() > 0:
+		if Input.is_action_just_pressed("hit_ball"):
+			$Guy.play("load")
+		elif Input.is_action_just_released("hit_ball") && intersection_points.size() > 0:
 			hit_ball()
 		else:
 			# Compute rebounds	
@@ -139,6 +141,7 @@ func compute_rebounds():
 
 func hit_ball():
 	current_game_state = GameState.BALL_ANIMATION
+	$Guy.play("hit")
 	start_point = $Level.get_ball_position()
 	target_intersection = 0
 	intersection_points.append(intersection_points[-1] + reflection_directions[-1] * previous_remaining_distance)
