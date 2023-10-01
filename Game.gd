@@ -3,10 +3,13 @@ extends Node2D
 export var enable_debug: bool
 
 export var ball_speed = 100
+const HOLE_RADIUS = 20
+const SQR_HOLE_RADIUS = HOLE_RADIUS * HOLE_RADIUS
+
 const MAX_REFLECTIONS = 100  # Maximum number of reflections to compute
 const MAX_DISTANCE = 5000
 
-enum GameState { AIMING, BALL_ANIMATION, END }
+enum GameState { AIMING, BALL_ANIMATION, SUCCESS, FAIL }
 var current_game_state = GameState.AIMING
 
 var start_direction: Vector2
@@ -23,22 +26,25 @@ var move_progress: float
 
 var mouse_position: Vector2
 var previous_mouse_position: Vector2
+var is_first_mouse_capture: bool = true
 var aim_position: Vector2
 
 func _ready():
 	current_game_state = GameState.AIMING
+	$Hole.scale = Vector2(HOLE_RADIUS / 16.0, HOLE_RADIUS / 16.0)
+	aim_position = Global.cache_aim
 
 func _process(delta):
 	# Capture exit 
 	if Input.is_action_pressed("quit"):
-		get_tree().quit()
+		get_tree().change_scene("res://LevelSelection.tscn")
 	
 	# Capture restart 
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 	
 	# Endgame
-	if current_game_state == GameState.END:
+	if current_game_state == GameState.SUCCESS || current_game_state == GameState.FAIL :
 		return
 	
 	# Retrieve input	
@@ -52,8 +58,9 @@ func _process(delta):
 		# Capture aim mouse
 		previous_mouse_position = mouse_position
 		mouse_position = get_global_mouse_position()
-		if mouse_position != previous_mouse_position:
+		if !is_first_mouse_capture && mouse_position != previous_mouse_position:
 			aim_position = mouse_position
+		is_first_mouse_capture = false
 		
 		# Capture ball hit
 		if Input.is_action_just_released("hit_ball") && intersection_points.size() > 0:
@@ -73,13 +80,33 @@ func update_ball_position(delta):
 	var distance = start_point.distance_to(target_point)
 	$Ball.position = start_point.linear_interpolate(target_point, move_progress)
 	move_progress += (delta / distance) * remaining_distance
+	
 	if (move_progress > 1):
 		start_point = target_point
 		target_intersection += 1
 		if target_intersection > intersection_points.size() - 1:
-			current_game_state = GameState.END;
+			current_game_state = GameState.FAIL;
+			# Fail state
+			yield(get_tree().create_timer(1.0), "timeout")
+			var scene = load("res://FailMessage.tscn")
+			var scene_instance = scene.instance()
+			scene_instance.set_name("FailMessage")
+			add_child(scene_instance)
+			return
 		move_progress = 0
 		remaining_distance -= distance
+	
+	# Compute distance with hole
+	# 16 x 16 = 256
+	var can_drop_in_hole = (intersection_points.size() - target_intersection) < 2
+	if can_drop_in_hole && $Ball.position.distance_squared_to($Hole.position) < SQR_HOLE_RADIUS:
+		current_game_state = GameState.SUCCESS
+		$Ball.visible = false
+		var scene = load("res://SuccessTransition.tscn")
+		var scene_instance = scene.instance()
+		scene_instance.set_name("SuccessTransition")
+		add_child(scene_instance)
+		scene_instance.start_transition()
 
 func compute_rebounds():
 	start_direction = (aim_position - $Ball.position).normalized()
@@ -115,6 +142,7 @@ func hit_ball():
 	target_intersection = 0
 	intersection_points.append(intersection_points[-1] + reflection_directions[-1] * previous_remaining_distance)
 	remaining_distance = MAX_DISTANCE
+	Global.cache_aim = aim_position
 
 func _draw():
 	if current_game_state == GameState.BALL_ANIMATION:

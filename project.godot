@@ -12,6 +12,10 @@ config_version=4
 
 config/name="Ludum"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=480
