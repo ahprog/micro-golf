@@ -142,6 +142,9 @@ func compute_rebounds():
 			break
 
 func hit_ball():
+	get_tree().paused = true
+	yield(get_tree().create_timer(0.15), 'timeout')
+	get_tree().paused = false
 	$Camera2D.shake(0.1,100,15)
 	current_game_state = GameState.BALL_ANIMATION
 	$Guy.play("hit")

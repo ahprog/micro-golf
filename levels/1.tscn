@@ -41,14 +41,14 @@ autowrap = true
 position = Vector2( 240, 400 )
 script = ExtResource( 6 )
 
-[node name="Ball" parent="Level" instance=ExtResource( 3 )]
-position = Vector2( 0, 80 )
-scale = Vector2( 0.5, 0.5 )
-
 [node name="Hole" type="Sprite" parent="Level"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, -60 )
 texture = ExtResource( 2 )
+
+[node name="Ball" parent="Level" instance=ExtResource( 3 )]
+position = Vector2( 0, 80 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="TopWall" type="StaticBody2D" parent="Level"]
 position = Vector2( 0, -160 )
