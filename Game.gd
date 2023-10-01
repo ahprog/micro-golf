@@ -95,6 +95,8 @@ func update_ball_position(delta):
 			scene_instance.set_name("FailMessage")
 			add_child(scene_instance)
 			return
+		else:
+			$Camera2D.shake(0.1,25,5)
 		move_progress = 0
 		remaining_distance -= distance
 	
@@ -140,6 +142,7 @@ func compute_rebounds():
 			break
 
 func hit_ball():
+	$Camera2D.shake(0.1,100,15)
 	current_game_state = GameState.BALL_ANIMATION
 	$Guy.play("hit")
 	start_point = $Level.get_ball_position()
