@@ -98,7 +98,7 @@ func update_ball_position(delta):
 	
 	# Compute distance with hole
 	# 16 x 16 = 256
-	var can_drop_in_hole = (intersection_points.size() - target_intersection) < 2
+	var can_drop_in_hole = (intersection_points.size() - target_intersection) < 3
 	if can_drop_in_hole && $Level.get_ball_position().distance_squared_to($Level.get_hole_position()) < SQR_HOLE_RADIUS:
 		current_game_state = GameState.SUCCESS
 		$Level.set_ball_visible(false)

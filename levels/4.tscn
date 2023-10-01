@@ -74,8 +74,8 @@ scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )
 
 [node name="Wall" type="StaticBody2D" parent="Level"]
-position = Vector2( 0, 25 )
-scale = Vector2( 1, 7 )
+position = Vector2( 0, 80 )
+scale = Vector2( 9, 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall"]
 shape = SubResource( 1 )
