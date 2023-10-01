@@ -31,7 +31,7 @@ var aim_position: Vector2
 
 func _ready():
 	current_game_state = GameState.AIMING
-	$Hole.scale = Vector2(HOLE_RADIUS / 16.0, HOLE_RADIUS / 16.0)
+	$Level.set_hole_scale(Vector2(HOLE_RADIUS / 16.0, HOLE_RADIUS / 16.0))
 	aim_position = Global.cache_aim
 
 func _process(delta):
@@ -78,7 +78,7 @@ func _process(delta):
 func update_ball_position(delta):
 	var target_point = intersection_points[target_intersection]
 	var distance = start_point.distance_to(target_point)
-	$Ball.position = start_point.linear_interpolate(target_point, move_progress)
+	$Level.set_ball_position(start_point.linear_interpolate(target_point, move_progress))
 	move_progress += (delta / distance) * remaining_distance
 	
 	if (move_progress > 1):
@@ -99,9 +99,9 @@ func update_ball_position(delta):
 	# Compute distance with hole
 	# 16 x 16 = 256
 	var can_drop_in_hole = (intersection_points.size() - target_intersection) < 2
-	if can_drop_in_hole && $Ball.position.distance_squared_to($Hole.position) < SQR_HOLE_RADIUS:
+	if can_drop_in_hole && $Level.get_ball_position().distance_squared_to($Level.get_hole_position()) < SQR_HOLE_RADIUS:
 		current_game_state = GameState.SUCCESS
-		$Ball.visible = false
+		$Level.set_ball_visible(false)
 		var scene = load("res://SuccessTransition.tscn")
 		var scene_instance = scene.instance()
 		scene_instance.set_name("SuccessTransition")
@@ -109,12 +109,13 @@ func update_ball_position(delta):
 		scene_instance.start_transition()
 
 func compute_rebounds():
-	start_direction = (aim_position - $Ball.position).normalized()
+	var ball_pos = $Level.get_ball_position()
+	start_direction = (aim_position - ball_pos).normalized()
 	intersection_points.clear()
 	reflection_directions.clear()
 	
 	var current_direction = start_direction
-	var current_position = $Ball.position
+	var current_position = ball_pos
 	var current_collider
 	remaining_distance = MAX_DISTANCE
 	for i in range(MAX_REFLECTIONS):
@@ -138,7 +139,7 @@ func compute_rebounds():
 
 func hit_ball():
 	current_game_state = GameState.BALL_ANIMATION
-	start_point = $Ball.position
+	start_point = $Level.get_ball_position()
 	target_intersection = 0
 	intersection_points.append(intersection_points[-1] + reflection_directions[-1] * previous_remaining_distance)
 	remaining_distance = MAX_DISTANCE
@@ -148,14 +149,15 @@ func _draw():
 	if current_game_state == GameState.BALL_ANIMATION:
 		draw_circle(intersection_points[-1], 5, Color.red)
 	elif current_game_state == GameState.AIMING:
-		draw_line($Ball.position, $Ball.position + start_direction*100, Color.white)
+		var ball_pos = $Level.get_ball_position()
+		draw_line(ball_pos, ball_pos + start_direction*100, Color.white)
 		
 	if intersection_points.size() > 0:
 		draw_rebounds()
 
 
 func draw_rebounds():
-	var current_position = $Ball.position
+	var current_position = $Level.get_ball_position()
 	var alpha = 1
 	var hints: float
 	if current_game_state == GameState.BALL_ANIMATION:
@@ -178,7 +180,7 @@ func reflect(D: Vector2, N: Vector2) -> Vector2:
 	return D - 2 * D.dot(N) * N
 
 func get_rotated_aim(baseAim: Vector2, angle_rad: float) -> Vector2:
-	var direction = (baseAim - $Ball.position).normalized()
+	var direction = (baseAim - $Level.get_ball_position()).normalized()
 	direction = direction.rotated(angle_rad)
-	var newAim = $Ball.position + direction * 100
+	var newAim = $Level.get_ball_position() + direction * 100
 	return newAim
