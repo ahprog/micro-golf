@@ -15,6 +15,7 @@ config/name="Ludum"
 [autoload]
 
 Global="*res://Global.gd"
+AudioManager="*res://AudioManager.tscn"
 
 [display]
 

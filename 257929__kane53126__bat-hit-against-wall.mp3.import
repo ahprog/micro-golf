@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/257929__kane53126__bat-hit-against-wall.mp3-128c83af2c563ced99d778ed50f7e16d.mp3str"
+
+[deps]
+
+source_file="res://257929__kane53126__bat-hit-against-wall.mp3"
+dest_files=[ "res://.import/257929__kane53126__bat-hit-against-wall.mp3-128c83af2c563ced99d778ed50f7e16d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

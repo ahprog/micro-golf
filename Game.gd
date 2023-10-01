@@ -96,6 +96,7 @@ func update_ball_position(delta):
 			add_child(scene_instance)
 			return
 		else:
+			AudioManager.play_rebound_sound(0.5 + randf() * 0.5)
 			$Camera2D.shake(0.1,25,5)
 		move_progress = 0
 		remaining_distance -= distance
@@ -105,6 +106,7 @@ func update_ball_position(delta):
 	var can_drop_in_hole = (intersection_points.size() - target_intersection) < 3
 	if can_drop_in_hole && $Level.get_ball_position().distance_squared_to($Level.get_hole_position()) < SQR_HOLE_RADIUS:
 		current_game_state = GameState.SUCCESS
+		AudioManager.play_hole_sound()
 		$Level.set_ball_visible(false)
 		var scene = load("res://SuccessTransition.tscn")
 		var scene_instance = scene.instance()
@@ -142,9 +144,10 @@ func compute_rebounds():
 			break
 
 func hit_ball():
-	get_tree().paused = true
-	yield(get_tree().create_timer(0.15), 'timeout')
-	get_tree().paused = false
+	AudioManager.play_hit_sound()
+#	get_tree().paused = true
+#	yield(get_tree().create_timer(0.15), 'timeout')
+#	get_tree().paused = false
 	$Camera2D.shake(0.1,100,15)
 	current_game_state = GameState.BALL_ANIMATION
 	$Guy.play("hit")

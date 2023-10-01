@@ -11,6 +11,7 @@ var target_title_position = Vector2(130, -100)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioManager.play_menu_music()
 	draw_grid()
 	draw_title()
 
@@ -28,6 +29,7 @@ func draw_grid():
 func _on_level_selected(level_num):
 	Global.current_level = level_num
 	get_tree().change_scene("res://levels/" + str(level_num) + ".tscn")
+	AudioManager.play_game_music()
 
 func draw_title():
 	var scene = load("res://Title.tscn")

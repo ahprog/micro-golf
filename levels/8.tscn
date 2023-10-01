@@ -139,6 +139,7 @@ offset = Vector2( 16, 16 )
 
 [node name="KeyHints" parent="." instance=ExtResource( 7 )]
 position = Vector2( 140, 70 )
+frame = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 240, 360 )

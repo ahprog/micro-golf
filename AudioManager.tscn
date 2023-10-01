@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://comedy-farm-music.mp3" type="AudioStream" id=1]
+[ext_resource path="res://AudioManager.gd" type="Script" id=2]
+[ext_resource path="res://608054__department64__golfswing(1).mp3" type="AudioStream" id=3]
+[ext_resource path="res://The Grand Affair - Coupe ♫ NO COPYRIGHT 8-bit Music.mp3" type="AudioStream" id=4]
+[ext_resource path="res://257929__kane53126__bat-hit-against-wall.mp3" type="AudioStream" id=5]
+[ext_resource path="res://75090__lukeirl__bled_golf2.mp3" type="AudioStream" id=6]
+
+[node name="AudioManager" type="Node"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -18.0
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -20.0
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.0
+
+[node name="Rebound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -7.0
+
+[node name="Hole" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -7.0
+pitch_scale = 0.85

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/comedy-farm-music.mp3-e469375a3bde1dad843045c8bf9ce874.mp3str"
+
+[deps]
+
+source_file="res://comedy-farm-music.mp3"
+dest_files=[ "res://.import/comedy-farm-music.mp3-e469375a3bde1dad843045c8bf9ce874.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
