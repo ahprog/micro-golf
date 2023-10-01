@@ -1,6 +1,7 @@
 extends Node2D
 
-
+func _ready():
+	AudioManager.play_menu_music()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
