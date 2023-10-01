@@ -1,7 +1,44 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sprites/level_icon/trou.png" type="Texture" id=1]
 [ext_resource path="res://LevelItem.gd" type="Script" id=2]
+[ext_resource path="res://item_style.tres" type="StyleBox" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0.427451 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.505882, 0.505882, 0.505882, 0.501961 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.443137, 0.721569, 0.164706, 0.372549 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.505882, 0.505882, 0.505882, 0.501961 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0.286275 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.505882, 0.505882, 0.505882, 0.501961 )
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="LevelItem" type="Button"]
 anchor_left = 0.5
@@ -13,6 +50,10 @@ margin_top = -25.0
 margin_right = 25.0
 margin_bottom = 25.0
 rect_min_size = Vector2( 50, 50 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = ExtResource( 3 )
 icon = ExtResource( 1 )
 icon_align = 1
 script = ExtResource( 2 )
