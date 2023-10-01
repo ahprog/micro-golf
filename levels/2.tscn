@@ -34,7 +34,7 @@ scale = Vector2( 13, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Level/TopWall/CollisionShape2D"]
-modulate = Color( 0.819608, 0.0509804, 0.0509804, 1 )
+modulate = Color( 0, 0.0509804, 0.188235, 1 )
 scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )
 
@@ -46,7 +46,7 @@ scale = Vector2( 13, 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Level/BottomWall/CollisionShape2D"]
-modulate = Color( 0.819608, 0.0509804, 0.0509804, 1 )
+modulate = Color( 0, 0.0509804, 0.188235, 1 )
 scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )
 
@@ -58,7 +58,7 @@ scale = Vector2( 1, 19 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Level/LeftWall/CollisionShape2D"]
-modulate = Color( 0.819608, 0.0509804, 0.0509804, 1 )
+modulate = Color( 0, 0.0509804, 0.188235, 1 )
 scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )
 
@@ -70,9 +70,17 @@ scale = Vector2( 1, 19 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Level/RightWall/CollisionShape2D"]
-modulate = Color( 0.819608, 0.0509804, 0.0509804, 1 )
+modulate = Color( 0, 0.0509804, 0.188235, 1 )
 scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )
 
 [node name="Guy" parent="." instance=ExtResource( 5 )]
 position = Vector2( 280, 550 )
+
+[node name="Ground" type="Sprite" parent="."]
+modulate = Color( 0.192157, 0.2, 0.658824, 1 )
+position = Vector2( 45, 60 )
+scale = Vector2( 12.2778, 18.9409 )
+z_index = -6
+texture = ExtResource( 1 )
+offset = Vector2( 16, 16 )
