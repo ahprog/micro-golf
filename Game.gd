@@ -81,7 +81,10 @@ func update_ball_position(delta):
 	var target_point = intersection_points[target_intersection]
 	var distance = start_point.distance_to(target_point)
 	$Level.set_ball_position(start_point.linear_interpolate(target_point, move_progress))
-	move_progress += (delta / distance) * remaining_distance
+	if distance == 0:
+		move_progress = 2
+	else:
+		move_progress += (delta / distance) * remaining_distance
 	
 	if (move_progress > 1):
 		start_point = target_point

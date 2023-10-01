@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sprites/wall.png" type="Texture" id=1]
 [ext_resource path="res://sprites/ball.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Guy.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sprites/tuto.png" type="Texture" id=8]
 [ext_resource path="res://levels/ScreenShake.gd" type="Script" id=9]
+[ext_resource path="res://KeyHints.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -113,3 +114,6 @@ offset = Vector2( 16, 16 )
 position = Vector2( 252, 118 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
+
+[node name="KeyHints" parent="." instance=ExtResource( 10 )]
+position = Vector2( 137, 713 )

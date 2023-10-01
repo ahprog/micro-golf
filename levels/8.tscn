@@ -100,6 +100,19 @@ modulate = Color( 0, 0.0509804, 0.188235, 1 )
 scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )
 
+[node name="Wall6" type="StaticBody2D" parent="Level"]
+position = Vector2( 130, 113 )
+rotation = 0.785398
+scale = Vector2( 1.927, 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall6"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Level/Wall6/CollisionShape2D"]
+modulate = Color( 0, 0.0509804, 0.188235, 1 )
+scale = Vector2( 0.997166, 1 )
+texture = ExtResource( 1 )
+
 [node name="Wall3" type="StaticBody2D" parent="Level"]
 position = Vector2( -100, 100 )
 rotation = -0.785398
@@ -113,6 +126,19 @@ modulate = Color( 0, 0.0509804, 0.188235, 1 )
 scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )
 
+[node name="Wall7" type="StaticBody2D" parent="Level"]
+position = Vector2( -124, 121 )
+rotation = -0.785398
+scale = Vector2( 1.821, 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall7"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Level/Wall7/CollisionShape2D"]
+modulate = Color( 0, 0.0509804, 0.188235, 1 )
+scale = Vector2( 0.997166, 1 )
+texture = ExtResource( 1 )
+
 [node name="Wall4" type="StaticBody2D" parent="Level"]
 position = Vector2( -100, -100 )
 rotation = 0.785398
@@ -122,6 +148,19 @@ scale = Vector2( 1, 10 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="Level/Wall4/CollisionShape2D"]
+modulate = Color( 0, 0.0509804, 0.188235, 1 )
+scale = Vector2( 0.997166, 1 )
+texture = ExtResource( 1 )
+
+[node name="Wall5" type="StaticBody2D" parent="Level"]
+position = Vector2( -137, -114 )
+rotation = 0.785398
+scale = Vector2( 1.557, 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Wall5"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Level/Wall5/CollisionShape2D"]
 modulate = Color( 0, 0.0509804, 0.188235, 1 )
 scale = Vector2( 0.997166, 1 )
 texture = ExtResource( 1 )

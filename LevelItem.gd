@@ -10,15 +10,13 @@ var icons: Array = [
 	preload("res://sprites/level_icon/chiffre5.png"),
 	preload("res://sprites/level_icon/chiffre6.png"),
 	preload("res://sprites/level_icon/chiffre7.png"),
-	preload("res://sprites/level_icon/chiffre8.png")
+	preload("res://sprites/level_icon/chiffre8.png"),
+	preload("res://sprites/level_icon/chiffre9.png"),
+	preload("res://sprites/level_icon/chiffre10.png"),
+	preload("res://sprites/level_icon/chiffre11.png"),
+	preload("res://sprites/level_icon/chiffre12.png")
 	]
-var icon2 = preload("res://sprites/level_icon/chiffre2.png")
-var icon3 = preload("res://sprites/level_icon/chiffre3.png")
-var icon4 = preload("res://sprites/level_icon/chiffre4.png")
-var icon5 = preload("res://sprites/level_icon/chiffre5.png")
-var icon6 = preload("res://sprites/level_icon/chiffre6.png")
-var icon7 = preload("res://sprites/level_icon/chiffre7.png")
-var icon8 = preload("res://sprites/level_icon/chiffre8.png")
+
 
 
 var level_num: int
